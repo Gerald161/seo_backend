@@ -32,6 +32,8 @@ class productSearch(APIView):
     def get(self, request, *args, **kwargs):
         slug = self.kwargs['slug']
 
+        slug = slug.replace("-", " ")
+
         products = Product.objects.filter(name__istartswith=slug)
 
         all_products = []
